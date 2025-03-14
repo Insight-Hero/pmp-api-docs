@@ -1,17 +1,27 @@
-# Welcome to MkDocs
+# Insight Hero PMP API Document
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+<font color="red">
+*** **Disclaimer:** 
 
-## Commands
+Please note that this API and its documentation are not final versions. They are subject to change, modification, or enhancement based on technical and business requirements from clients. Updates may occur without prior notice to accommodate evolving needs. 
+</font>
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Overview
+This API enables clients to interact with a negotiating (bidding) and ordering system for an e-commerce platform.  
 
-## Project layout
+**Key features include:** 
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- **Bids**: Clients can submit bids on product variants, with a limit of 3 bids per price group (Product variants with same sale price) per user (tracked by IP). Bids can be accepted, rejected, or result in a special offer after 3 rejections. 
+
+- **Orders**: Clients can submit orders to be stored in Insight Hero Database, with the system filtering items to include only those using valid discount codes tied to specific variants from the shop. 
+
+- **Authentication**: All endpoints require a Bearer token (authToken) unique to the shop, provided in the Authorization header. 
+
+The API is built with REST principles, uses JSON for request/response bodies, and is secured via shop-specific tokens. 
+
+## API URL
+The API URL will be provided upon request. Contact us for details.
+
+## Authentication
+- **Header**: `Authorization: Bearer <authToken>`
+- **`<authToken>`**: Unique token for the shop, provided by Insight Hero.

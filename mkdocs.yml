@@ -1,1 +1,10 @@
 site_name: Insight Hero PMP API Docs
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Bids: bids.md
+  - Orders: orders.md
+  - Products: products.md
+extra:
+  generator: false
