@@ -39,6 +39,7 @@ The response indicates whether the bid was accepted or rejected, provides detail
 | `isSameVariant`    | Boolean | `true` if the bid is for the same variant as a previous bid; otherwise `false`.              |
 | `bidsLeft`         | Number  | Number of bidding attempts remaining for this price group (e.g., `2` out of 3). Omitted if bid is accepted. |
 | `bidCount`         | Number  | Total number of bids made for this price group (e.g., `1`). Omitted if bid is accepted.      |
+| `target`         | Number[]  | The same price group that the discount code is issued for      |
 
 #### Rejected Bid (Status: 200 OK)
 Occurs when `bid < minPrice` (minimum acceptable bid price, set in Insight Hero Client's Products Database), with bids remaining.
@@ -72,7 +73,8 @@ Occurs when `bid >= minPrice`.
   "statusCode": "250",
   "isSpecialOffer": false,
   "blockTime": 1615820400000,
-  "isSameVariant": true
+  "isSameVariant": true,
+  "target": [2001, 2002]
 }
 ```
 
@@ -89,7 +91,7 @@ After 3 rejected bids on the same price group, a special offer is issued.
     "isSpecialOffer": true,
     "blockTime": 1649462400000,
     "isSameVariant": true,
-    "target": "[2001, 2002]"
+    "target": [2001, 2002]
 }
 ```
 
