@@ -50,6 +50,41 @@ Create an order in the Insight Hero Database, filtering items to include only th
 }
 ```
 
+### Responses
+
+#### Success (Status: 201 Created)
+```json
+{
+    "message": "Order created successfully",
+    "order": {
+        "orderId": 12345,
+        "price": 80.00,
+        "discountAmount": 20.00,
+        "discountCode": "BID-WEU48Q",
+        "variantDetails": [
+            {
+                "productId": 1001,
+                "variantId": 2001,
+                "quantity": 2,
+                "price": 50.00,
+                "discountCode": "BID-WEU48Q",
+                "discountValue": 10.00,
+                "variantName": "Red",
+                "variantProductName": "T-Shirt"
+            }
+        ]
+    }
+}
+```
+
+#### Error (Status: 400 Bad Request)
+```json
+{
+    "error": "Failed Create Order: Failed Process Order: No items with valid discount codes, matching variant IDs, and correct discount values from this shop"
+}
+```
+
+
 ## GET /api/orders/:orderId
 
 ### Description
@@ -73,9 +108,7 @@ The response includes the order details if found, or an error if the order doesn
 |-------|------|-------------|
 | message |	String | A human-readable success message |
 | order	| Object | The order details (null if not found in error cases) |
-| order.id	| Number | Internal database ID of the order |
 | order.orderId	| Number | lient-provided order ID |
-| order.shopId	| Number | ID of the shop that created the order |
 | order.price	| Number | Total price after discounts |
 | order.discountAmount	| Number | Total discount applied across all items |
 | order.discountCode	| String | Comma-separated list of discount codes used in the order |
@@ -94,9 +127,7 @@ The response includes the order details if found, or an error if the order doesn
 {
     "message": "Order retrieved successfully",
     "order": {
-        "id": 1,
         "orderId": 12345,
-        "shopId": 1,
         "price": 80.00,
         "discountAmount": 20.00,
         "discountCode": "BID-WEU48Q",

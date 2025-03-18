@@ -23,10 +23,8 @@ The response includes an array of product variants matching the `productId`, or 
 |-------|------|-------------|
 | message |	String | A human-readable success message |
 | products | Array | List of product variants (empty array if not found in error cases) |
-| products[].id | Number | Internal database ID of the product variant |
 | products[].productId | Number | Client-provided product ID |
 | products[].variantId | Number | Unique variant ID |
-| products[].shopId | Number | ID of the shop that owns the product |
 | products[].name | String | Product name (e.g., "T-Shirt") |
 | products[].variantName | String | Variant name (e.g., "Red") |
 | products[].price | Number | Price of the variant |
@@ -38,20 +36,16 @@ The response includes an array of product variants matching the `productId`, or 
     "message": "Product retrieved successfully",
     "products": [
         {
-            "id": 1,
             "productId": 1001,
             "variantId": 2001,
-            "shopId": 1,
             "name": "T-Shirt",
             "variantName": "Red",
             "price": 50.00,
             "minPrice": 40.00
         },
         {
-            "id": 2,
             "productId": 1001,
             "variantId": 2002,
-            "shopId": 1,
             "name": "T-Shirt",
             "variantName": "Blue",
             "price": 50.00,
@@ -96,10 +90,8 @@ The response includes the product variant details if found, or an error if the v
 |-------|------|-------------|
 | message | String | A human-readable success message |
 | product | Object | The product variant details (null if not found in error cases) |
-| product.id | Number | Internal database ID of the product variant |
 | product.productId	| Number | Client-provided product ID |
 | product.variantId	| Number | Unique variant ID |
-| product.shopId | Number | ID of the shop that owns the product |
 | product.name | String | Product name (e.g., "T-Shirt") |
 | product.variantName | String| Variant name (e.g., "Red") |
 | product.price | Number | Price of the variant |
@@ -110,10 +102,8 @@ The response includes the product variant details if found, or an error if the v
 {
     "message": "Product retrieved successfully",
     "product": {
-        "id": 1,
         "productId": 1001,
         "variantId": 2001,
-        "shopId": 1,
         "name": "T-Shirt",
         "variantName": "Red",
         "price": 50.00,
