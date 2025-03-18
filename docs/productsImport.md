@@ -13,21 +13,21 @@ Currently, we only accept product data from clients in CSV format, which we will
 |----------------|---------|----------|-------------|
 | `productId`    | Number  | Yes      | Unique product ID from the client’s system (e.g., `1001`). |
 | `variantId`    | Number  | Yes      | Unique variant ID from the client’s system (e.g., `2001`). Must be unique across all products. |
-| `variantName`  | String  | No       | Name of the variant (e.g., "Red"). Can be blank (`""`) or omitted.|
+| `variantName`  | String  | No       | Name of the variant (e.g., "Red"). **Defaults to "Default Title" if blank (`""`) or omitted.**|
 | `price`        | Number  | Yes       | Price of the variant (e.g., `50.00`). |
-| `minPrice`     | Number  | Yes       | Minimum acceptable bid price (e.g., `40.00`). |
+| `minPrice`     | Number  | Yes       | Minimum acceptable bid price (e.g., `40.00`), **automatically set to 10% below the price if not provided.** |
 | `inventory`    | Number  | No       | Stock quantity (e.g., `10`). Can be blank (`""`) or omitted. |
 | `name`         | String  | Yes      | Product name (e.g., "T-Shirt"). Must be provided and non-empty. |
 | `productType`  | String  | No       | Type or category of the product (e.g., "Clothing"). Can be blank (`""`) or omitted. |
 | `tags`         | String  | No       | Comma-separated tags (e.g., "summer, sale"). Can be blank (`""`) or omitted. |
-| `bidEnabled`   | Boolean | Yes      | Whether bidding is enabled (`1` for true, `0` for false). Defaults to `0` if invalid. |
+| `bidEnabled`   | Boolean | Yes      | Whether bidding is enabled (`1` for true, `0` for false). **Defaults to `1` (true) if not explicitly set to `0`.** |
 | `sku`          | String  | No       | Stock Keeping Unit (e.g., "TSHIRT-RED"). Can be blank (`""`) or omitted. |
 | `vendor`       | String  | No       | Vendor name (e.g., "Acme Corp"). Can be blank (`""`) or omitted. |
 
 ### Notes
 - **Header Row**: The CSV must include a header row with these exact column names (case-sensitive).
 - **Numeric Fields**: Use plain numbers (e.g., `1001`, `50.00`) without quotes, except when blank (`""`).
-- **Boolean Field**: `bidEnabled` should be `1` (true) or `0` (false). Invalid values default to `0`.
+- **Boolean Field**: `bidEnabled` should be `1` (true) or `0` (false). Invalid values default to `1`.
 - **String Fields**: Use quotes only if the value contains commas or special characters (standard CSV rules apply).
 - **Unique Constraint**: `variantId` must be unique across all rows in the CSV and existing database records.
 
