@@ -111,3 +111,8 @@ After 3 rejected bids on the same price group, a special offer is issued.
 ```json
 { "error": "Product not found" }
 ```
+
+- Product Not Bid Enabled:
+```json
+{ "error": "Product not bid enabled" }
+```
